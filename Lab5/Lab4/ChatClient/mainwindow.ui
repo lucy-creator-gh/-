@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>聊天室客户端</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+
+* {
+    background-color: #F0F2F5;
+    font-family: &quot;Microsoft YaHei&quot;, SimHei, sans-serif;
+    font-size: 14px;
+    color: #333333;
+}
+
+/* ============ 顶部标题 ============ */
+QLabel#titleLabel {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1F2329;
+    padding: 8px 0;
+    background: transparent;
+}
+
+/* ============ 登录卡片 ============ */
+QFrame#loginFrame {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #E5E6EB;
+}
+
+/* 登录页标签 */
+QFrame#loginFrame QLabel {
+    color: #4E5969;
+    background: transparent;
+}
+
+/* ============ 所有输入框【统一样式，确保显示】 ============ */
+QLineEdit {
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 6px;
+    border: 1px solid #E5E6EB;
+    background-color: #FFFFFF;
+    color: #333333;
+}
+QLineEdit:focus {
+    border-color: #409EFF;
+    outline: none;
+}
+
+/* ============ 按钮样式【区分主次，无异常】 ============ */
+/* 通用按钮：登录/发送 */
+QPushButton {
+    height: 34px;
+    padding: 0 20px;
+    border-radius: 6px;
+    background-color: #409EFF;
+    color: #FFFFFF;
+    border: none;
+}
+QPushButton:hover {background-color: #66B1FF;}
+QPushButton:pressed {background-color: #337ECC;}
+
+/* 退出按钮（右上角警示色） */
+QPushButton#logoutButton {
+    background-color: #F56C6C;
+}
+QPushButton#logoutButton:hover {background-color: #F78989;}
+
+/* ============ 聊天核心区域 ============ */
+/* 左侧聊天框 */
+QTextEdit#roomTextEdit {
+    border: 1px solid #E5E6EB;
+    border-radius: 6px;
+    padding: 8px;
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+/* 右侧成员列表 */
+QListWidget#userListWidget {
+    border: 1px solid #E5E6EB;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    max-width: 140px;
+}
+QListWidget::item {
+    height: 30px;
+    padding-left: 8px;
+    background: transparent;
+}
+QListWidget::item:selected {
+    background-color: #ECF5FF;
+    color: #409EFF;
+}
+
+/* 底部输入框 */
+QLineEdit#sayLineEdit {
+    background-color: #FFFFFF;
+}
+
+/* ============ 滚动条美化【轻量不冲突】 ============ */
+QScrollBar:vertical {width:7px; background:transparent;}
+QScrollBar::handle:vertical {background:#DCDFE6; border-radius:3px;}
+QScrollBar::handle:vertical:hover {background:#C0C4CC;}
+QScrollBar::add-line,QScrollBar::sub-line {height:0;}
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="titleLabel">
+      <property name="text">
+       <string>詹智豪的聊天室</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="chatPage">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QTextEdit" name="roomTextEdit"/>
+          </item>
+          <item>
+           <widget class="QListWidget" name="userListWidget"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="logoutButton">
+            <property name="text">
+             <string>退出</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLineEdit" name="sayLineEdit"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="sayButton">
+            <property name="text">
+             <string>发送</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="loginPage">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QFrame" name="loginFrame">
+          <property name="minimumSize">
+           <size>
+            <width>300</width>
+            <height>180</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>服务器地址：</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>昵　　称：</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="serverEdit">
+             <property name="text">
+              <string>127.0.0.1</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="usernameEdit">
+             <property name="text">
+              <string>zzh</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QPushButton" name="loginButton">
+             <property name="text">
+              <string>进入聊天室</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
