@@ -1,0 +1,14 @@
+debug/databasemanager.o
+debug/main.o
+debug/mainwindow.o
+debug/reminderworker.o
+debug/reportexporter.o
+debug/task.o
+debug/taskdialog.o
+debug/taskmodel.o
+debug/moc_databasemanager.o
+debug/moc_mainwindow.o
+debug/moc_reminderworker.o
+debug/moc_reportexporter.o
+debug/moc_taskdialog.o
+debug/moc_taskmodel.o
